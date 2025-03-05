@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
@@ -25,7 +26,7 @@ int main() {
     fgets(nameEs1, 50, stdin);             // Armazena na variavel nameEs1 o nome digitado pelo usuário.
     nameEs1[strcspn(nameEs1, "\n")] = 0;   // Remove o \n da função fgets.
     
-    printf("\nDigite o código: ");         // captura código da carta.
+    printf("\nDigite o código de 3 digitos: ");         // captura código da carta.
     fgets(cod1, 5, stdin);
     cod1[strcspn(cod1, "\n")] = 0;  
     
@@ -52,7 +53,7 @@ int main() {
 
     //Calcular Densidade populacional e PIB per Capita
     float densPop1 = pop1 / area1; // Densidade populacional
-    float pibCap1 = pib1 / pop1; // PIB per Capita
+    float pibCap1 = pib1*1000000000 / pop1; // PIB per Capita
 
     //Calculo do Super Poder
     float superPoder1 = (float) pop1 + area1 + pib1 + (float) ponTuris1 + pibCap1 + (1/densPop1);
@@ -63,7 +64,7 @@ int main() {
     fgets(nameEs2, 50, stdin);             // Armazena na variavel nameEs2 o nome digitado pelo usuário.
     nameEs2[strcspn(nameEs2, "\n")] = 0;   // Remove o \n da função fgets.
     
-    printf("\nDigite o código: ");         // captura código da carta.
+    printf("\nDigite o código de 3 digitos: ");         // captura código da carta.
     fgets(cod2, 5, stdin);
     cod2[strcspn(cod2, "\n")] = 0;  
     
@@ -89,7 +90,7 @@ int main() {
 
     //Calcular Densidade populacional e PIB per Capita
     float densPop2 = pop2 / area2; // Densidade populacional
-    float pibCap2 = pib2 / pop2; // PIB per Capita
+    float pibCap2 = pib2*1000000000 / pop2; // PIB per Capita
 
     //Calculo do Super Poder
     float superPoder2 = (float) pop2 + area2 + pib2 + (float) ponTuris2 + pibCap2 + (1/densPop2);
@@ -107,7 +108,8 @@ int main() {
     printf("  PIB: %.2f bilhões de reais\n", pib1);
     printf("  Número de Pontos Turísticos: %d\n", ponTuris1);
     printf("  Densidade Populacional: %.2f hab/km²\n", densPop1);
-    printf("  PIB per Capita: %.2f reais\n", pibCap1);
+    printf("  PIB per Capita: %.2f reais por pessoa\n", pibCap1);
+    printf("  O Super Poder: %.2f\n", superPoder1);
 
     printf("\n************ Carta 2 ************\n");
     printf("  O nome do Estado: %s\n", nameEs2);
@@ -118,10 +120,11 @@ int main() {
     printf("  PIB: %.2f bilhões de reais\n", pib2);
     printf("  Número de Pontos Turísticos: %d\n", ponTuris2);
     printf("  Densidade Populacional: %.2f hab/km²\n", densPop2);
-    printf("  PIB per Capita: %.2f reais\n", pibCap2);
+    printf("  PIB per Capita: %.2f reais por pessoa\n", pibCap2);
+    printf("  O Super Poder: %.2f\n", superPoder2);
 
     // Bloco de código para realizar a comparação das cartas e dizer o vencedor por meio de operadores relacionais, apenas.
-    int compPopulação = pop1 > pib2;
+    int compPop = pop1 > pop2;
     int compArea = area1 > area2;
     int compPib = pib1 > pib2;
     int compPontTur = ponTuris1 > ponTuris2;
@@ -130,19 +133,15 @@ int main() {
     int compSupPod = superPoder1 > superPoder2;
 
     // Exibir dados da carta que venceu tendo como referencia a carta 1 - Se valor for 1 ganhou, se 0 perdeu em relação a carta 2.
-    printf("\n***                A comparação da carta vencedora                 ****");
-    printf("\n**** tendo como referencia a carta 1 - Se valor for 1 ganhou, se 0 perdeu em relação a carta 2 ****\n");
-    printf("A População da carta 1 venceu: %d\n", compPopulação);
+    printf("\n***************** A comparação da carta vencedora *****************");
+    printf("\n**** Tendo como referencia a carta 1: Se valor for 1 *ganhou*, se 0 *perdeu* em relação a carta 2 ****\n");
+    printf("A População da carta 1 venceu: %d\n", compPop);
     printf("A Área da carta 1 venceu: %d\n", compArea);
     printf("O PIB da carta 1 venceu: %d\n", compPib);
     printf("O Pontos turísticos da carta 1 venceu: %d\n", compPontTur);
     printf("O Densidade Populacional da carta 1 venceu: %d\n", compDens);
     printf("O PIB per Capita da carta 1 venceu: %d\n", compPibPerCap);
     printf("O Super Poder da carta 1 venceu: %d\n", compSupPod);
-
-
-
-
 
 
     return 0;
